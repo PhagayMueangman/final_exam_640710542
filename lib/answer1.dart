@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
 import 'EditProfileScreen.dart';
-import 'answer1.dart';
-import 'answer2.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class answer1 extends StatefulWidget {
+  const answer1({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<answer1> createState() => _answer1();
 }
 
-class _MyAppState extends State<MyApp> {
+class _answer1 extends State<answer1> {
   ThemeMode _themeMode = ThemeMode.light;
 
   void _changeTheme() {
@@ -27,6 +21,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      
       title: 'Profile Card App',
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
@@ -53,7 +48,7 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profile Card'),
+        title: const Text('โปรไฟล์ผู้ใช้'),
         actions: [
           IconButton(
             icon: Icon(
@@ -87,7 +82,7 @@ class ProfileCard extends StatelessWidget {
           children: [
             CircleAvatar(
               radius: 50,
-              backgroundImage: NetworkImage('https://static.thairath.co.th/media/dFQROr7oWzulq5Fa5K79Lg8G4AwJ7S6C6QfeiXspyCHSOspqO0x7MtIPfDXyEwVVdyu.webp'),
+              backgroundImage: NetworkImage('https://www.kasandbox.org/programming-images/avatars/leaf-blue.png'),
             ),
             const SizedBox(height: 16),
             Text(
@@ -104,37 +99,29 @@ class ProfileCard extends StatelessWidget {
               '0636021079',
               style: theme.textTheme.bodyMedium,
             ),
-            
-            
             const SizedBox(height: 16),
             ElevatedButton(
-              onPressed: () async {
-              // ✅ ส่ง restaurantId ไปยังหน้า AddFoodItemScreen
-              final result = await Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => answer1(),
-                ),
-              );
-            },
-              child: const Text('answer1 : โปรไฟล์ผู้ใช้'),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => EditProfileScreen(
+                      currentName: 'Phaguy MUeangman', // Replace with actual data
+                      currentEmail: 'mueangman_p@silpakorn.edu', // Replace with actual data
+                      currentPhone: '0636021079', // Replace with actual data
+                    ),
+                  ),
+                );
+              },
+              child: const Text('แก้ไขโปรไฟล์'),
+              
+      
+   
             ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () async {
-              // ✅ ส่ง restaurantId ไปยังหน้า AddFoodItemScreen
-              final result = await Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => answer2(),
-                ),
-              );
-            },
-              child: const Text('answer2 : คำนวณค่าจัดส่ง'),
-            )
           ],
         ),
       ),
     );
   }
+  
 }
